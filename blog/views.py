@@ -10,7 +10,7 @@ posts = [
         'date': '10-10-1999'
     },
     {
-        'author': 'Reza',
+        'author': 'Majid',
         'title': 'Second post',
         'content': 'Second post content',
         'date': '10-10-1999'
