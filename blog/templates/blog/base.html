@@ -19,9 +19,9 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+      <div class="collapse navbar-collapse col-12" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="{%url 'blog-home'%}">Home</a>
           </li>
           <li class="nav-item">
@@ -34,29 +34,40 @@
             <a class="nav-link" href="#">Contact</a>
           </li>
         </ul>
+        <ul class="navbar-nav m-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{%url 'register'%}">Sign up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{%url 'login'%}">Sign in</a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>
-    <!-- Page Content -->
-  <div class="container">
+  <!-- Page Content -->
+  <div class="container my-4">
+
+    {%if messages%}
+      {%for message in messages%}
+        <div class="alert alert-{{message.tags}}" role="alert">
+          {{message}}
+        </div>
+      {% endfor %}
+    {%endif%}
 
     <div class="row">
 
       <!-- Blog Entries Column -->
       <div class="col-md-8">
-
-        <h1 class="my-4">Page Heading
-          <small>Secondary Text</small>
-        </h1>
-        {%block content%}
-        {%endblock%}
+        {%block content%}{%endblock%}
       </div>
 
       <!-- Sidebar Widgets Column -->
       <div class="col-md-4">
 
         <!-- Search Widget -->
-        <div class="card my-4">
+        <div class="card mb-4">
           <h5 class="card-header">Search</h5>
           <div class="card-body">
             <div class="input-group">
@@ -69,7 +80,7 @@
         </div>
 
         <!-- Categories Widget -->
-        <div class="card my-4">
+        <div class="card mb-4">
           <h5 class="card-header">Categories</h5>
           <div class="card-body">
             <div class="row">
@@ -104,7 +115,7 @@
         </div>
 
         <!-- Side Widget -->
-        <div class="card my-4">
+        <div class="card mb-4">
           <h5 class="card-header">Side Widget</h5>
           <div class="card-body">
             You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!

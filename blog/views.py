@@ -5,7 +5,6 @@ from .models import Post
 
 
 def home(request):
-    print(request)
     return render(request, 'blog/home.html', {
         'title': "Home",
         'posts': Post.objects.all().order_by('-created_at'),
@@ -13,4 +12,6 @@ def home(request):
 
 
 def about(request):
-    return render(request, 'blog/about.html')
+    return render(request, 'blog/about.html', {
+        'title': "About"
+    })
