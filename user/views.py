@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from pprint import pprint
 from .forms import UserRegistrationForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -12,7 +13,7 @@ def register(request):
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Success! Now sign in')
+            messages.success(request, f'Congratulations! Now you can log in')
             return redirect('login')
     else:
         form = UserRegistrationForm()
@@ -23,7 +24,6 @@ def register(request):
     })
 
 
-def login(request):
-    return render(request, 'user/login.html', {
-        'title': 'Sign in'
-    })
+@login_required
+def profile(request):
+    return render(request, 'user/profile.html')
